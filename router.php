@@ -8,9 +8,9 @@ use Slim\App;
 return function(App $app){
 
     $app->get('/', HomeController::class . ":home");
-    $app->group('/users', function(Group $group){
-          $group->get('/login', UserController::class . ":login");
-          $group->post('/register', UserController::class . ":register");
+    $app->group('/users', function (Group $group) {
+        $group->post('/login', UserController::class . ":login");
+        $group->post('/register', UserController::class . ":register");
     });
 
 };

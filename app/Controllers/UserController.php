@@ -11,8 +11,9 @@ class UserController
     public function login(Request $request, Response $response, array $args): Response
     {
         $data = $request->getParsedBody();
-        $login = $data["login"] ?? "";
-        $password = $data["password"] ?? "";
+        $login = $data['login'] ?? "";
+        $password = $data['password'] ?? "";
+
         if($login != $_ENV["ADMIN_LOGIN"] || $password != $_ENV["ADMIN_PASSWORD"] ) {
             $response->getBody()->write(json_encode([
                 "success" => false
@@ -52,6 +53,6 @@ class UserController
              "user" => $user
         ];
         $response->getBody()->write(json_encode($result));
-        return $response->withHeader("Content Type", "application/json");
+        return $response->withHeader("Content-Type", "application/json");
     }
 }
